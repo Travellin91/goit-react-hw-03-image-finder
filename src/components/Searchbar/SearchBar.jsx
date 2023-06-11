@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { MdOutlineImageSearch } from 'react-icons/md';
 import './searchbar.css';
 
 class Searchbar extends Component {
   state = {
-    searhQuery: '',
+    searchQuery: '',
   };
 
   handleChange = event => {
-    this.setState({ searhQuery: event.target.value });
+    this.setState({ searchQuery: event.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    if (!this.state.searhQuery.trim()) {
+    if (!this.state.searchQuery.trim()) {
       return;
     }
-    this.props.onSubmit(this.state.searhQuery);
+    this.props.onSubmit(this.state.searchQuery);
   };
 
   render() {
     return (
       <header className="searchbar">
         <form className="SearchForm" onSubmit={this.handleSubmit}>
-        <button type="submit" className="SearchForm_button">
+          <button type="submit" className="SearchForm_button">
+            <MdOutlineImageSearch className="SearchForm_icon" size={24} />
             <span className="SearchForm_button_label">Search</span>
           </button>
           <input
@@ -33,7 +35,7 @@ class Searchbar extends Component {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            value={this.state.query}
+            value={this.state.searchQuery}
           />
         </form>
       </header>
@@ -41,8 +43,8 @@ class Searchbar extends Component {
   }
 }
 
-export default Searchbar;
-
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
+
+export default Searchbar;
