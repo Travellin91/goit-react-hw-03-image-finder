@@ -67,7 +67,7 @@ class Searchbar extends Component {
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder="Пошук зображень та фотографій"
             value={this.state.searchQuery}
           />
         </form>
