@@ -25,18 +25,18 @@ class Searchbar extends Component {
 
   handleFlagClick = () => {
     const { isPlaying } = this.state;
-  
+
     if (this.audio) {
       this.audio.pause();
       this.audio.currentTime = 0;
       this.audio = null;
     }
-  
+
     if (!isPlaying) {
       this.audio = new Audio(anthemUkraine);
       this.audio.play();
     }
-  
+
     this.setState({ isPlaying: !isPlaying });
   };
 
@@ -45,20 +45,18 @@ class Searchbar extends Component {
 
     return (
       <header className="searchbar">
-        <div className='flags'>
+        <div className="flags">
           <CountryFlag
             countryCode="UA"
             svg
             onClick={this.handleFlagClick}
             style={{ width: '40px', height: '40px' }}
           />
-          <span onClick={this.handleFlagClick}>
-            {isPlaying ? '' : ''}
-          </span>
+          <span onClick={this.handleFlagClick}>{isPlaying ? '' : ''}</span>
         </div>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
           <button type="submit" className="SearchForm_button">
-            <MdOutlineImageSearch className="SearchForm_icon" size={24} />
+            <MdOutlineImageSearch className="SearchForm_icon" size={24} onClick={this.handleClearSearch}/>
             <span className="SearchForm_button_label">Search</span>
           </button>
           <input

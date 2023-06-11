@@ -6,13 +6,14 @@ const ImageGalleryItem = ({ image, onItemClick }) => {
   const handleClick = () => {
     onItemClick(image);
   };
+
   return (
-    <li className="ImagegaleryItem" onClick={handleClick}>
+    <li className="ImageGalleryItem" onClick={handleClick}>
       <img
         src={image.webformatURL}
         alt={image.tags}
         className="ImageGalleryItem_image"
-      ></img>
+      />
     </li>
   );
 };
