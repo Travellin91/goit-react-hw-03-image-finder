@@ -10,17 +10,28 @@ import './styles.css';
 import { getImages } from './Services/getimages.js';
 
 class App extends Component {
-  state = {
-    isLoading: false,
-    images: [],
-    error: null,
-    searchQuery: '',
-    page: 1,
-    showModal: false,
-    selectedImage: null,
-    isLastPage: false,
-    isButtonShow: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      isLoading: false,
+      images: [],
+      error: null,
+      searchQuery: '',
+      page: 1,
+      showModal: false,
+      selectedImage: null,
+      isLastPage: false,
+      isButtonShow: false,
+    };
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
 
   componentDidUpdate(_prevProps, prevState) {
     const prevQuery = prevState.searchQuery;
@@ -101,6 +112,12 @@ class App extends Component {
     document.body.style.overflow = 'auto';
   };
 
+  handleKeyDown = event => {
+    if (event.code === 'Escape') {
+      this.handleModalClose();
+    }
+  };
+
   onLoadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
@@ -108,14 +125,8 @@ class App extends Component {
   };
 
   render() {
-    const {
-      images,
-      isLoading,
-      error,
-      showModal,
-      selectedImage,
-      isLastPage,
-    } = this.state;
+    const { images, isLoading, error, showModal, selectedImage, isLastPage } =
+      this.state;
 
     return (
       <div className="App_div">
