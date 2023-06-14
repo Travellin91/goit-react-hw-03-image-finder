@@ -51,13 +51,14 @@ class Searchbar extends Component {
             svg
             onClick={this.handleFlagClick}
             style={{ width: '40px', height: '40px' }}
+            
           />
           <span onClick={this.handleFlagClick}>{isPlaying ? '' : ''}</span>
         </div>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
           <button type="submit" className="SearchForm_button">
             <MdOutlineImageSearch className="SearchForm_icon" size={24} onClick={this.handleClearSearch}/>
-            <span className="SearchForm_button_label">Search</span>
+            <span className="SearchForm_button_label">Пошук</span>
           </button>
           <input
             className="SearchForm_input"
