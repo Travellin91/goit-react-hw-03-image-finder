@@ -25,13 +25,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
-  }
 
   componentDidUpdate(_prevProps, prevState) {
     const prevQuery = prevState.searchQuery;
@@ -110,12 +103,6 @@ class App extends Component {
   handleModalClose = () => {
     this.setState({ selectedImage: null, showModal: false });
     document.body.style.overflow = 'auto';
-  };
-
-  handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      this.handleModalClose();
-    }
   };
 
   onLoadMore = () => {
